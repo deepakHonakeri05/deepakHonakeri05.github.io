@@ -1,0 +1,15 @@
+li  a{
+	color: green;
+}
+
+h4 + ul{
+	border: 1px solid red;
+}
+
+a[href = "http://www.google.com"]{
+	color:red;
+}
+
+li:nth-of-type(odd){
+	background: green
+}

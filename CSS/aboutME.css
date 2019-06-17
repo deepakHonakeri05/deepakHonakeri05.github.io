@@ -1,0 +1,24 @@
+h1{
+	color: #778899;
+	border-color: green;
+	/*border-width: 5px;
+	border-style: solid;*/
+
+	border:2px solid purple;
+}
+
+li{
+	color: #009000;
+}
+
+h4{
+	background: rgb(255,100,90);
+	color:rgba(190,0,190,0.7);
+}
+
+body{
+	/*background: url(https://i.ytimg.com/vi/NiEABxi8G4U/maxresdefault.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;*/
+	background: pink;
+}

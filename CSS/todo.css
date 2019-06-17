@@ -1,0 +1,16 @@
+body {
+	background: orange;
+}
+
+li{
+	border:1px solid white;
+}
+
+#checkbox{
+	border: 2px solid green;
+}
+
+.special{
+	background: red;
+	text-decoration: line-through;
+}

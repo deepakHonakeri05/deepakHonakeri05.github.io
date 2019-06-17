@@ -1,0 +1,50 @@
+/*Font Family*/
+p{
+	font-family: 'Inconsolata', monospace;
+  }	
+
+
+body{
+	font-size: 8px
+}
+
+/* `em` relative size to pixels of the body*/
+
+h1{
+	font-size: 13em;	
+}
+
+span{
+	font-size: 2em;
+}
+
+p{
+	font-size: 2em;
+  }
+
+/*`Font-weight` Ranges from 100-800 (every 100 step)*/
+
+p{  
+	font-weight: 300;
+ }	
+
+/*Line Spaces*/
+
+ p{
+	line-height: 1.2;
+  }
+
+/*text-align*/  
+h1{
+	text-align: center;
+}
+
+span {
+	font-family: 'Indie Flower', cursive;
+	text-decoration: underline;
+}
+
+#bacon{
+	font-size: 1.4em;
+	text-decoration: line-through;
+}
