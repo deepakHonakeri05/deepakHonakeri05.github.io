@@ -2,19 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="generator" content="Jekyll v4.0.1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Deepak's Website</title>
-    <!-- Bootstrap core CSS -->
-	<link href="static/css/bootstrap.css" rel="stylesheet">
+
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+
 
     <style>
-
-      #centerContent {
-      	text-align: center;
-      }
-
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -24,18 +18,28 @@
         user-select: none;
       }
 
+      #roundedPic {
+      border-radius: 50%;
+      width: 13rem;
+      height: auto;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+     }
+
       #logoPic {
-      	border-radius: 30%;
+        border-radius: 30%;
       }
 
-      #profilePic {
-      	border-radius: 50%;
-      	width: 60%;
-  		height: auto;
-  		margin-left: auto;
-  		margin-right: auto;
-  		margin-top: 10%;
-      }
+      .socialMedia {
+        max-width: 480px;
+        width: 100%;
+        height: auto;
+        display: block;
+        margin:20px auto;
+  
+    }
+
 
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
@@ -43,104 +47,148 @@
         }
       }
     </style>
-    <!-- Custom styles for this template -->
-    <link href="static/css/index.css" rel="stylesheet">
+    <link href="static/css/projects.css" rel="stylesheet">
   </head>
   <body>
-  		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"/><
-      	<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
-      	<script src="static/js/bootstrap.bundle.js"></script>
 
+      <nav class="site-header sticky-top py-1">
+        <div class="container d-flex flex-column flex-md-row justify-content-between">
+          <a class="py-2" href="deepakHonakeri05.github.io">
+            <img id="logoPic" src="static/images/logo.png" height="40">
+          </a>
+        </div>
+      </nav>
 
-		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		  <a class="navbar-brand" href="https://deepakHonakeri05.github.io"> <img id="logoPic" src="static/images/logo.png" height="40"></a>
-		</nav>
+      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+        <div class="col-md-5 p-lg-5 mx-auto my-5">
+          <h1 class="display-4 font-weight-normal"><b>Hey,</b></h1>
+          <h3>I'm Deepak Honakeri</h3>
+          <a class="btn btn-outline-secondary" href="static/html/resume.html">Checkout my Resume</a>
+        </div>
+        
+      </div>
 
-		<main role="main">
+      <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3" >
+        <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+          <div class="my-3 py-3">
+            <h2 class="display-5">About Myself</h2>
+            <img id ="roundedPic" src="static/images/pic.JPG" alt="Card image">
+            <p class="lead" style="margin-top:10px;">I am a <b>Computer Science Engineering</b> undergrad student at PES Institute of Technology, Bangalore. I am an aspiring data scientist and fledgling writer. </p>
 
-		  <div class="jumbotron">
-		    <div class="container">
-		    	<div class="row">
-		    		<div class="col-md-4">
-		    			<div class="card" style="width: 18rem;background-color: rgb(244,236,229);">
-						  <img id ="profilePic" class="card-img-top" src="static/images/pic.JPG">
-						  <div class="card-body">
-						    <h5 id="centerContent" class="card-title"><b>Deepak Honakeri</b></h5>
-						    <p  id="centerContent" class="card-text">Undergrad student<br> @ PES University</p>
-						  </div>
-						</div>
-		    		</div>
+          </div>
+        </div>
 
-		    		<div class="col-md-8">
-		    			<h1 class="display-2"><b>Hello!</b></h1>
-		    			<p> I'm an aspiring data scientist and a developer, offering expertise in Deep Learning. This website is a platform to showcase my project work, writing skills and much more!<br><br>Scroll down for more details.</p>
-		    		</div>
-		    		
-		    	</div>
+      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+          <div class="my-3 p-3">
+            <h2 class="display-5">Reach me out</h2>
+            <p class="lead">Please feel free to contact</p>
+          </div>
+          <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
 
-					
+          </div>
+        </div>
+      </div>
 
-		    </div>
-		  </div>
+      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+          <h1 class="display-4 font-weight-normal"><b>Skills</b></h1>     
 
-		  <div class="container">
-		    <!-- Example row of columns -->
-		    <div class="row">
+          <div class="card-deck">
+              <div class="card  bg-light mb-3">
+                <!-- <img class="card-img-top" src="static/images/comp_languages.png" alt="Card image cap"> -->
+                <div class="card-header"><b>Computer Languages</b></div>
+                <div class="card-body">
+                  <button style="margin: 5px" type="button" class="btn btn-outline-dark"><b>C</b></button>
+                    <button style="margin: 5px" type="button" class="btn btn-outline-dark"><b>Java</b></button>
+                    <button style="margin: 5px" type="button" class="btn btn-outline-dark"><b>Python</b></button>
+                    <button style="margin: 5px" type="button" class="btn btn-outline-dark"><b>MySQL</b></button>
+                    <button style="margin: 5px" type="button" class="btn btn-outline-dark"><b>HTML5</b></button>
+                    <button style="margin: 5px" type="button" class="btn btn-outline-dark"><b>CSS3</b></button>
+                </div>
+              </div>
 
-		      <div class="col-md-4">
-		          <div class="card" style="margin-top: 20px;">
-		          	<a href="static/html/resume.html">
-				    	<img src="static/images/resume.jpg" class="card-img-top" style="width: fill; height: 225px;">
-				    </a>
+              <div class="card bg-light mb-3">
+                <div class="card-header"><b>Application Development</b></div>
+                <div class="card-body">
+                  <button style="margin: 5px" type="button" class="btn btn-outline-dark"><b>Bootstrap</b></button>
+                    <button style="margin: 5px" type="button" class="btn btn-outline-dark"><b>Django</b></button>
+                    <button style="margin: 5px" type="button" class="btn btn-outline-dark"><b>Firebase</b></button>
+                    <button style="margin: 5px" type="button" class="btn btn-outline-dark"><b>Github</b></button>
+                    <button style="margin: 5px" type="button" class="btn btn-outline-dark"><b>Native Android Development</b></button>
+                </div>
+              </div>
+              <div class="card bg-light mb-3">
+                <div class="card-header"><b>Data Science and Machine Learning</b></div>
+                <div class="card-body">
+                    <button style="margin: 5px" type="button" class="btn btn-outline-dark"><b>Tensorflow</b></button>
+                    <button style="margin: 5px" type="button" class="btn btn-outline-dark"><b>Keras</b></button>
+                    <button style="margin: 5px" type="button" class="btn btn-outline-dark"><b>Sk Learn</b></button>
+                    <button style="margin: 5px" type="button" class="btn btn-outline-dark"><b>Numpy</b></button>
+                    <button style="margin: 5px" type="button" class="btn btn-outline-dark"><b>Pandas</b></button>
+                    <button style="margin: 5px" type="button" class="btn btn-outline-dark"><b>Android Development</b></button>
+                </div>
+              </div>
+            </div>
+      </div>
 
-				    <div class="card-body">
-				      <h5 class="card-title">Resume</h5>
-				      <p class="card-text">A overview of all projects, expriences, volunteering and much more</p>
-				      <a href="static/html/resume.html" role="button" class="btn btn-secondary btn-sm">Check it out!</a>
-				    </div>
+      <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+        <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+            <div class="my-3 p-3">
+              <h2 class="display-5">Another headline</h2>
+              <p class="lead">And an even wittier subheading.</p>
+            </div>
+          <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+        </div>
 
-				  </div>
-				
-		      </div>
+        <div class="bg-primary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+          <div class="my-3 py-3">
+            <h2 class="display-5">Another headline</h2>
+            <p class="lead">And an even wittier subheading.</p>
+          </div>
+            <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+        </div>
+      </div>
 
-		      <div class="col-md-4">
-		        <div class="card" style="margin-top: 20px;">
-				    <a href="static/html/projects.html">
-				    	<img src="static/images/projects.jpg" class="card-img-top" style="width: fill; height: 225px;">
-				    </a>
-				    <div class="card-body">
-				      <h5 class="card-title">Projects</h5>
-				      <p class="card-text">An arsenal of projects along with <b>a demo</b> and link to <b> source code</b>.</p>
-				      <a href="static/html/projects.html" role="button" class="btn btn-secondary btn-sm">Check it out!</a>
-				    </div>
-				  </div>
-		      </div>
+      <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+        <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+          <div class="my-3 p-3">
+            <h2 class="display-5">Another headline</h2>
+            <p class="lead">And an even wittier subheading.</p>
+          </div>
+          <div class="bg-white shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+        </div>
+        <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+          <div class="my-3 py-3">
+            <h2 class="display-5">Another headline</h2>
+            <p class="lead">And an even wittier subheading.</p>
+          </div>
+          <div class="bg-white shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+        </div>
+      </div>
 
-		      <div class="col-md-4">
-		        <div class="card" style="margin-top: 20px;">
-		        	<a href="static/html/resume.html">
-				    	<img src="static/images/blog.jpg" class="card-img-top" style="width: fill; height: 225px;">
-				    </a>
-					<div class="card-body">
-				      <h5 class="card-title">Blogs</h5>
-				      <p class="card-text">Technical blogs related to <b>Data Science</b>, setting up <b>servers</b> and much more!</p>
-				      <a href="static/html/blogs.html" role="button" class="btn btn-secondary btn-sm">Check it out!</a>
-				    </div>
-				  </div>
-		      </div>
-		    </div>
+      <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+        <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+          <div class="my-3 p-3">
+            <h2 class="display-5">Another headline</h2>
+            <p class="lead">And an even wittier subheading.</p>
+          </div>
+          <div class="bg-white shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+        </div>
+        <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+          <div class="my-3 py-3">
+            <h2 class="display-5">Another headline</h2>
+            <p class="lead">And an even wittier subheading.</p>
+          </div>
+          <div class="bg-white shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+        </div>
+      </div>
 
-		    <hr>
+      <footer class="container py-5">
+        <p>&copy; 2020-21<br><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-slash-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm9.854 4.854a.5.5 0 0 0-.708-.708l-7 7a.5.5 0 0 0 .708.708l7-7z"/>
+        </svg> Coded by Deepak <br> </p>
+      </footer>
 
-		  </div> <!-- /container -->
-
-		</main>
-
-		<footer class="container">
-		  <p>&copy; Copyright 2020-2021<br> Website uses : HTML, CSS, Javascript and Bootstrap<br> </p>
-		</footer>
-
-
-
-	</body>	
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="static/js/bootstrap.bundle.js"></script>
+</body>
 </html>
