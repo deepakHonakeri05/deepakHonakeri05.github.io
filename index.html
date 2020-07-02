@@ -55,7 +55,8 @@
         }
 
         .hoverImage {
-          width: 100%;height: auto;
+          width: 100%;
+          height: 100%;
           border-radius: 21px 21px 0 0;
         }
 
@@ -95,16 +96,21 @@
 	  	$(window).scroll(function() {
 	  var scroll = $(window).scrollTop();
 	  console.log(scroll);
+
 	  $("#parallex").css({
-	    height: 100 - scroll/8 + "%"
+	    height: 100 - scroll/2 + "%"
+ 	  });
+
+	  $("#parallex").css({
+	    width: 100 - scroll/2 + "%"
  	  });
 	});
   </script>
 
 <body>
-    <div class="header" >
-	    <img id="parallex" style="display: block;margin-left: auto; margin-right: auto; height: fill;width: fill;" class="header-image" src="static/images/hello.jpg" alt="">
-	  </div>
+    <div class="container">
+	    <img id="parallex" style="display: block;margin-left: auto; margin-right: auto;" src="static/images/hello.jpg" alt="">
+	</div>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
         <div class="col-md-5 p-lg-5 mx-auto my-5">
@@ -391,16 +397,38 @@
 
       <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
         <div class="col-md-5 p-lg-5 mx-auto my-5">
-          <h1 class="display-4 font-weight-normal"><b>Gallery</b></h1>
+          <h1 class="display-4 font-weight-normal"><b>Volunteering</b></h1>
         </div>
       </div>
+
+
+      <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+          <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+            <div class="my-3 p-3">
+              <h2 class="display-5">Mentor at Mentor Without Borders</h2>
+              <p class="lead">Volunteered towards teaching unprivileged students from  all over the world.</p>
+              <a href="https://www.mentorswithoutborders.net">See website ></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="static/docs/MWB.pdf">See certificate ></a>
+            </div>
+
+            <a href="static/docs/DSC_PESIT_Newsletter_1558977655.pdf">
+              <div class="bg-white shadow-sm mx-auto" style="width: 35%; height: 300px;border-radius: 21px 21px 0 0;">  
+                <div class ="hoverImageContainer">
+                  <img src="static/images/mwb.png" class="hoverImage">
+                   <div class="overlay">
+                    <div class="replaceText">See certificate</div>
+                  </div>
+                </div>  
+              </div>
+            </a>
+          </div>
+        </div>
 
       <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
           <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
             <div class="my-3 p-3">
               <h2 class="display-5">Seminar at Google Student Developer Clubs</h2>
               <p class="lead">Delivered a seminar on 'Introduction to Machine Learning'.</p>
-              <a href="static/docs/DSC_PESIT_Newsletter_1558977655.pdf"><div>See Newsletter ></div></a>
+              <a href="static/docs/DSC_PESIT_Newsletter_1558977655.pdf">See Newsletter ></a>
             </div>
 
             <a href="static/docs/DSC_PESIT_Newsletter_1558977655.pdf">
@@ -417,10 +445,20 @@
 
         <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
           <div class="my-3 py-3">
-            <h2 class="display-5">Participation at Ingenious<br>Hackathon</h2>
-            <p class="lead">Wonderful and hard working team at Ingenious hackathon helping to get in top20 position.</p>
+            <h2 class="display-5">Maaya 2018<br>A Cultural Fest Application.</h2>
+            <p class="lead">An android application aimed in providing information related to the fest</p>
+            <a href="https://play.google.com/store/apps/details?id=com.deepak.maaya.mk18&hl=en_IN">See App ></a>
           </div>
-          <div class="bg-white shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+          <div class="bg-white shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+          	<a href="https://play.google.com/store/apps/details?id=com.deepak.maaya.mk18&hl=en_IN">
+              <div class="hoverImageContainer">
+                <img class="hoverImage" style="width: auto;height: 100%; border-radius: 0px 0px 0px 0px;" src="static/images/maaya_2018.png">
+                <div class="overlay">
+                  <div class="replaceText">See App</div>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
 
