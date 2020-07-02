@@ -107,7 +107,51 @@
 	});
   </script>
 
-<body>
+
+  <script type="text/javascript">
+		
+		function updateLeads()
+		{
+			var database = firebase.database()
+
+			var siteHitsLocal = 10;
+
+			var timestamp = (new Date()).getTime();
+			database.ref('/stats/siteHits').update({
+			 siteHits: siteHitsLocal,
+			 lastSeen: timestamp
+			})
+
+		}
+
+	</script>
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+	     https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+
+	<script>
+	  // Your web app's Firebase configuration
+	  var firebaseConfig = {
+	    apiKey: "AIzaSyCjShrp-_VXVg-EfRZSWPJW9Pyva33DW2I",
+	    authDomain: "portfolio-website-73b77.firebaseapp.com",
+	    databaseURL: "https://portfolio-website-73b77.firebaseio.com",
+	    projectId: "portfolio-website-73b77",
+	    storageBucket: "portfolio-website-73b77.appspot.com",
+	    messagingSenderId: "739093930878",
+	    appId: "1:739093930878:web:99eb4391e6f31b9e77092f",
+	    measurementId: "G-HC45222YLS"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	  firebase.analytics();
+	</script>
+
+<body onload="updateLeads()">
+
     <div class="container">
 	    <img id="parallex" style="display: block;margin-left: auto; margin-right: auto;" src="static/images/hello.jpg" alt="">
 	</div>
