@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="generator" content="Jekyll v4.0.1">
+	<title>Website's Stats</title>
+
+	<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.9.3/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
+</head>
+
+<script>
+	  // Your web app's Firebase configuration
+	  var firebaseConfig = {
+	    apiKey: "AIzaSyCjShrp-_VXVg-EfRZSWPJW9Pyva33DW2I",
+	    authDomain: "portfolio-website-73b77.firebaseapp.com",
+	    databaseURL: "https://portfolio-website-73b77.firebaseio.com",
+	    projectId: "portfolio-website-73b77",
+	    storageBucket: "portfolio-website-73b77.appspot.com",
+	    messagingSenderId: "739093930878",
+	    appId: "1:739093930878:web:99eb4391e6f31b9e77092f",
+	    measurementId: "G-HC45222YLS"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	  firebase.analytics();
+</script>
+
+<script type="text/javascript">
+		
+		function getLeads()
+		{
+			var database = firebase.database().ref('Site_Stats');
+			var siteHitsRef = database.child('Visit_stats');
+
+			var statsDisplayTag = document.getElementById("statsDisplay");
+
+			firebase.database().ref().child("Site_Stats").orderByChild("lastSeen").once("value", function (snapshot) {
+			  snapshot.forEach(function(childSnapshot) {
+			    var getHit = childSnapshot.val().hits;
+			    var getTime = childSnapshot.val().lastSeen;
+
+			    document.getElementById("statsDisplay").innerHTML = getHit + "\n" + (new Date(getTime)).toDateString();
+
+			  });
+			});
+		}
+
+</script>
+
+
+<body onload="getLeads()">
+
+	<p style="text-align: center;padding: 100px;" id="statsDisplay">  </p>
+
+</body>
+</html>
