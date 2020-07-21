@@ -45,7 +45,7 @@
 			    var getHit = childSnapshot.val().hits;
 			    var getTime = childSnapshot.val().lastSeen;
 
-			    document.getElementById("statsDisplay").innerHTML = getHit + "\n" + (new Date(getTime)).toDateString();
+			    document.getElementById("statsDisplay").innerHTML = getHit + "<br><br>" + (new Date(getTime)).toDateString();
 
 			  });
 			});
