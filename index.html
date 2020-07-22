@@ -9,10 +9,11 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
 
-	<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.9.3/firebase.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-analytics.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+	  <script type="text/javascript" src="./static/js/main.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+	  <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase.js"></script>
+	  <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-analytics.js"></script>
+	  <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
 
     <style>
       .bd-placeholder-img {
@@ -97,64 +98,7 @@
 
 </head>
 
-	<script>
-	  // Your web app's Firebase configuration
-	  var firebaseConfig = {
-	    apiKey: "AIzaSyCjShrp-_VXVg-EfRZSWPJW9Pyva33DW2I",
-	    authDomain: "portfolio-website-73b77.firebaseapp.com",
-	    databaseURL: "https://portfolio-website-73b77.firebaseio.com",
-	    projectId: "portfolio-website-73b77",
-	    storageBucket: "portfolio-website-73b77.appspot.com",
-	    messagingSenderId: "739093930878",
-	    appId: "1:739093930878:web:99eb4391e6f31b9e77092f",
-	    measurementId: "G-HC45222YLS"
-	  };
-	  // Initialize Firebase
-	  firebase.initializeApp(firebaseConfig);
-	  firebase.analytics();
-	</script>
 
-
-  <script type="text/javascript">
-	  	$(window).scroll(function() {
-	  var scroll = $(window).scrollTop();
-	  console.log(scroll);
-
-	  $("#parallex").css({
-	    height: 100 - scroll/2 + "%"
- 	  });
-
-	  $("#parallex").css({
-	    width: 100 - scroll/2 + "%"
- 	  });
-	});
-  </script>
-
-
-  <script type="text/javascript">
-		
-		function updateLeads()
-		{
-			var database = firebase.database().ref('Site_Stats');
-			var siteHitsRef = database.child('Visit_stats');
-			var newHit = 0;
-			var timestamp = (new Date()).getTime();
-
-			firebase.database().ref().child("Site_Stats").orderByChild("lastSeen").once("value", function (snapshot) {
-			  snapshot.forEach(function(childSnapshot) {
-			    var oldHit=childSnapshot.val().hits;
-			    newHit = oldHit + 1;
-
-			    siteHitsRef.update({
-				hits : newHit,
-				lastSeen : timestamp
-				})
-
-			  });
-			});
-		}
-
-	</script>
 
 <body onload="updateLeads()">
 

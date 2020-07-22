@@ -1,68 +1,51 @@
-/* eslint-env browser, jquery */
+$(window).scroll(function() {
+	var scroll = $(window).scrollTop();
+	console.log(scroll);
 
-window.sk=window.sk||function(){(sk.q=sk.q||[]).push(arguments)};
+	$("#parallex").css({
+	    height: 100 - scroll/2 + "%"
+ 	});
 
-(() => {
+	$("#parallex").css({
+	    width: 100 - scroll/2 + "%"
+ 	});
+});	
 
-
-	const form = $('#feedback-form');
-
-	// Include all the existing search params
-	for (const [key, value] of params) {
-		if (key === 'nameField') {
-			form.find('[name="name"]').val(value);
-			continue;
-		}
-
-		if (key === 'emailField') {
-			form.find('[name="email"]').val(value);
-			continue;
-		}
-
-		if (key === 'messageField') {
-			form.find('[name="message"]').val(value).get(0).setSelectionRange(0, 0);
-			continue;
-		}
-
-		if (key === 'extraInfo') {
-			form.append(
-				$(`<textarea style="display:none" readonly name="${key}"></textarea>`).text(value)
-			);
-			continue;
-		}
-
-		form.append(
-			$(`<input type="hidden" name="${key}">`).val(value)
-		);
-	}
-
-	const getSubject = () => {
-		// Note: Intentionally not using template strings
-		// here as CloudFlare removes space inside them...
-		const product = params.has('product') ? (': ' + params.get('product')) : '';
-		const message = form.find('[name="message"]').val().slice(0, 100);
-		return 'Feedback' + product + ' - ' + message;
+function init() {
+	// Your web app's Firebase configuration
+	var firebaseConfig = {
+		apiKey: "AIzaSyCjShrp-_VXVg-EfRZSWPJW9Pyva33DW2I",
+		authDomain: "portfolio-website-73b77.firebaseapp.com",
+		databaseURL: "https://portfolio-website-73b77.firebaseio.com",
+		projectId: "portfolio-website-73b77",
+		storageBucket: "portfolio-website-73b77.appspot.com",
+		messagingSenderId: "739093930878",
+		appId: "1:739093930878:web:99eb4391e6f31b9e77092f",
+		measurementId: "G-HC45222YLS"
 	};
+	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
+	firebase.analytics();
+}
 
-	sk('form', '#feedback-form', {
-		id: '374a60e0f07a',
-		data: {
-			_subject: getSubject
-		},
-		onSuccess() {
-			$('#main').html('<h1 class="title is-2">Thanks for the feedback!</h1><p>You will now be redirected to my website.');
+function updateLeads()
+{
+	init();
+	var database = firebase.database().ref('Site_Stats');
+	var siteHitsRef = database.child('Visit_stats');
+	var newHit = 0;
+	var timestamp = (new Date()).getTime();
 
-			setTimeout(() => {
-				window.location.href = 'https://www.decathlon.in';
-			}, 3000);
-		}
+	firebase.database().ref().child("Site_Stats").orderByChild("lastSeen").once("value", function (snapshot) {
+		snapshot.forEach(function(childSnapshot) {
+			var oldHit=childSnapshot.val().hits;
+			newHit = oldHit + 1;
+
+			siteHitsRef.update({
+			hits : newHit,
+			lastSeen : timestamp
+			})
+
+		});
 	});
-})();
-
-// For the imported navbar
-(() => {
-	// Burger menu toggle
-	$(document).on('click', '.navbar-burger', () => {
-		$('.navbar-burger, .navbar-menu').toggleClass('is-active');
-	});
-})();
+}
