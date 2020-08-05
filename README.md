@@ -1,3 +1,5 @@
 # Welcome to my personal website!
 
-Here's the link : https://deepakHonakeri05.github.io
+Here are the links : 
+ * https://deepakHonakeri.ml
+ * https://deepakHonakeri05.github.io
