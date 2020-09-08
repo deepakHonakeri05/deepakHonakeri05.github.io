@@ -1,0 +1,103 @@
+heading{
+	display: block;
+	font-size: 25pt;
+	color: white;
+	margin-top: 50pt;
+	margin-bottom: 50pt;
+	text-align: center;
+}
+
+
+students{
+	background-color: rgb(0, 0, 0);
+	font-family : Helvetica;
+}
+
+student{
+	display: block;
+	margin-bottom: 30pt;
+	margin-left: 0pt;
+}
+
+studname{
+	display: block;
+	font-size: 18pt;
+	text-transform: uppercase;
+	color:white;
+}
+
+usn:before{
+	content: "USN : ";
+	font-size: 14pt;
+	font-weight: bold;
+	color: blueviolet;
+}
+
+usn{
+	display: block;
+	color: white;
+	font-size: 10pt;
+	font-weight: bold;
+	margin-left: 20pt;
+	text-transform: uppercase;
+}
+
+college:before{
+	content: "Name of college : ";
+	font-size: 14pt;
+	font-weight: bold;
+	color: blueviolet;
+}
+
+college{
+	display: block;
+	color: white;
+	font-size: 10pt;
+	font-weight: bold;
+	margin-left: 20pt;
+}
+
+branch:before{
+	content: "Branch : ";
+	font-size: 14pt;
+	font-weight: bold;
+	color: blueviolet;
+}
+
+branch{
+	display: block;
+	color: white;
+	font-size: 10pt;
+	font-weight: bold;
+	margin-left: 20pt;
+}
+
+yoj:before{
+	content: "Year of Joining : ";
+	font-size: 14pt;
+	font-weight: bold;
+	color: blueviolet;
+}
+
+yoj{
+	display: block;
+	color: white;
+	font-size: 10pt;
+	font-weight: bold;
+	margin-left: 20pt;
+}
+
+email:before{
+	content: "USN : ";
+	font-size: 14pt;
+	font-weight: bold;
+	color: blueviolet;
+}
+
+email{
+	display: block;
+	color: white;
+	font-size: 10pt;
+	font-weight: bold;
+	margin-left: 20pt;
+}
