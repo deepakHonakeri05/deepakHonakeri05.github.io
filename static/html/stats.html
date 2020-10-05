@@ -32,6 +32,13 @@
 </script>
 
 <script type="text/javascript">
+
+		function removeExtraneousTimeValue(gotTime)
+		{
+			var timeAmPm = gotTime.substring(0,9);
+			
+			return timeAmPm;
+		}
 		
 		function getLeads()
 		{
@@ -42,10 +49,15 @@
 
 			firebase.database().ref().child("Site_Stats").orderByChild("lastSeen").once("value", function (snapshot) {
 			  snapshot.forEach(function(childSnapshot) {
-			    var getHit = childSnapshot.val().hits;
-			    var getTime = childSnapshot.val().lastSeen;
+			    var gotHit = childSnapshot.val().hits;
 
-			    document.getElementById("statsDisplay").innerHTML = getHit + "<br><br>" + (new Date(getTime)).toDateString();
+			    var getDate = childSnapshot.val().lastDate;
+			    var gotDate = (new Date(getDate)).toDateString();
+
+			    var gotTime = (new Date(getDate)).toTimeString() +"";
+			    gotTime = removeExtraneousTimeValue(gotTime);
+
+			    document.getElementById("statsDisplay").innerHTML = gotHit + "<br><br>" + gotDate + "  @  " + gotTime;
 
 			  });
 			});

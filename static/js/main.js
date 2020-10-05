@@ -28,27 +28,14 @@ function init() {
 	firebase.analytics();
 }
 
-function getTime( ) {
-	var d = new Date( ); 
-	d.setHours( d.getHours() + 2 ); // offset from local time
-	var h = (d.getHours() % 12) || 12; // show midnight & noon as 12
-	return (
-		( h < 10 ? '0' : '') + h +
-		( d.getMinutes() < 10 ? ':0' : ':') + d.getMinutes() +
-                // optional seconds display
-		// ( d.getSeconds() < 10 ? ':0' : ':') + d.getSeconds() + 
-		( d.getHours() < 12 ? ' AM' : ' PM' )
-	);
-	
-}
-
 function updateLeads()
 {
 	init();
 	var database = firebase.database().ref('Site_Stats');
 	var siteHitsRef = database.child('Visit_stats');
 	var newHit = 0;
-	var timestamp = getTime();
+	var dateTimeStamp = (new Date()).getTime();
+	
 
 	firebase.database().ref().child("Site_Stats").orderByChild("lastSeen").once("value", function (snapshot) {
 		snapshot.forEach(function(childSnapshot) {
@@ -57,7 +44,7 @@ function updateLeads()
 
 			siteHitsRef.update({
 			hits : newHit,
-			lastSeen : timestamp
+			lastDate : dateTimeStamp
 			})
 
 		});
