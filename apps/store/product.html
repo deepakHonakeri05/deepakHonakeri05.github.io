@@ -85,47 +85,6 @@
 
 	</script>
 
-	<script>
-
-        function changes(id){
-            localStorage.setItem("id",id) ;
-            window.location.replace("product.html") ;
-        }
-
-
-		function createCard(cardData) {
-			var cardTemplate = [
-				'<div class="col-lg-3 col-sm-6">',
-					'<div class="product-item">',
-						'<div >',
-							'<div class="pi-pic">',
-								'<a href="#" onclick="changes('+"'"+cardData.id+"'"+')">',
-									'<img class="productImg" src=' + cardData.image+'>',
-								'</a>',
-								'<div class="pi-links" >',
-									'<a href="#" onclick="changes('+"'"+cardData.id+"'"+')" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>',
-									'<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>',
-								'</div>',
-							'</div>',
-							'<div class="pi-text">',
-								'<h6>₹'+cardData.price +'</h6>',
-								'<a href="#" onclick="changes('+"'"+cardData.id+"'"+')">'+cardData.Name+'</a>',
-							'</div>',
-						'</div>',
-					'</div>',
-				'</div>'
-
-			];
-			// a jQuery node
-			return $(cardTemplate.join(''));
-
-		}
-
-		function goBack() {
-		  window.history.back();
-		}
-
-	</script>
 
 	<style type="text/css">
 		
