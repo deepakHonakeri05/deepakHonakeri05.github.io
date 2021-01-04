@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Android Visualizer</title>
+
+	<link href="css/bootstrap-modified.css" rel="stylesheet">
+	<!-- Include roboto.css to use the Roboto web font, material.css to include the theme and ripples.css to style the ripple effect -->
+	<link href="bower_components/bootstrap-material-design/dist/css/roboto.min.css" rel="stylesheet" data-noprefix>
+	<link href="bower_components/bootstrap-material-design/dist/css/material.min.css" rel="stylesheet">
+	<link href="bower_components/bootstrap-material-design/dist/css/ripples.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="vendor/codemirror-5.3/lib/codemirror.css">
+	<!--<link rel="stylesheet" href="lib/codemirror-5.3/mode/javascript/javascript.css">
+	<link rel="stylesheet" href="lib/codemirror-5.3/mode/xml/xml.css">-->
+	<link rel="stylesheet" href="vendor/codemirror-ui/codemirror-ui.css" type="text/css" media="screen" />
+
+	<link rel="stylesheet" href="css/editor.css">
+	<link rel="stylesheet" href="css/android-layout.css">
+
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="http://lh6.ggpht.com/pXxnDpPZHXnKqBqwvI4cmhsztuM23lbmy0o5zVEZTfXQR69u5Nlx7hfxcCOGZP_Yp_3HwpK3zVAtXejMAg=s0">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@udacity">
+  <meta name="twitter:creator" content="@udacity">
+
+  <link rel="icon" sizes="any" mask href="https://s3-us-west-1.amazonaws.com/udacity-content/images/pinned_icon.svg">
+  <meta name="theme-color" content="#294860">
+  <link rel="shortcut icon" href="favicon.ico?1b568b3a5b0b2c4a7162c29aeed70961" />
+  <link rel="apple-touch-icon" href="//lh4.ggpht.com/dR8q0uh3GoH-kU00KnQ1elSkqBeWi-ZOQ1_14uDxWRACmhrIDQFOfItKdAf7hngoResshnbb9hmVpPuwkjI=s0#w=152&h=152">
+
+	<script src="vendor/modernizr.min.js"></script>
+	<script>
+	if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
+		document.documentElement.classList.add('ie');
+		console.log(document.documentElement.className);
+	}
+
+  // users who visit udacity's github pages should be redirected to the official path
+  if (location.host === 'udacity.github.io') {
+    location.href = 'http://labs.udacity.com/android-visualizer/' + location.hash;
+  }
+  </script>
+	<script src="vendor/prefixfree.min.js"></script>
+
+</head>
+<body>
+	<div class="wrapper">
+		<div class="row">
+			<div class="col-xs-7 col-md-8 input-area-col">
+				<div class="panel panel-primary input-area-wrapper">
+					<div class="panel-heading">
+						<h3 class="panel-title">XML Layout Code</h3>
+					</div>
+					<div class="panel-body">
+						<ul id="input-topbar" class="nav nav-pills">
+							<li><button class="btn btn-default btn-undo">Undo</button></li>
+							<li><button class="btn btn-default btn-redo">Redo</button></li>
+							<li>
+								<p class="code-saved-msg">Code has <span class="not-word">not</span> been saved</p>
+							</li>
+							<li class="pull-right"><button class="btn btn-default btn-reset-code">Reset Code</button></li>
+						</ul>
+
+						<div class="input-area">
+
+						</div>
+
+						<div class="error-msg"></div>
+
+						<ul class="nav nav-pills">
+							<li><button class="btn btn-default btn-available-images" data-toggle="modal" data-target="#images-dialog">Available Images</button></li>
+							<li><button class="btn btn-default btn-report-issue" data-toggle="modal" data-target="#issue-dialog">Report Issue</button></li>
+							<li class="pull-right"><a href="https://drive.google.com/file/d/0B5XIkMkayHgRMVljUVIyZzNmQUU/view" class="btn btn-default btn-cheatsheet" target="_blank">Cheat Sheet</a></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-xs-5 col-md-4 output-area-col">
+				<div class="output-area-wrapper">
+					<div class="phone">
+						<div class="screen"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="modal fade" id="issue-submitted-dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4>Report Submitted</h4>
+					</div>
+					<div class="modal-body">
+						<p>Thank you for the bug report!</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<iframe src="" frameborder="0" id="hidden_iframe" name="hidden_iframe" class="hidden"></iframe>
+		<div id="issue-dialog" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h4 class="modal-title">Report an Issue</h4>
+					</div>
+					<div class="modal-body">
+						<p>Thank you for reporting a bug to us. Your XML code will be included with this bug report. </p>
+						<form action="https://docs.google.com/a/knowlabs.com/forms/d/1XDuFxeFRO0_yaFm-4RSQEqJT2G8fTNih0KoRMJycF_4/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;" id="issue-form">
+							<div class="form-group voffset4">
+								<label for="entry_446623266">Description: Please write instructions describing how to reproduce the issue.</label>
+								<textarea class="form-control" name="entry.446623266" rows="4" cols="0" id="entry_446623266" aria-label="Please describe the issue. Include instructions describing how to reproduce the issue. " aria-required="true" required placeholder="Type your description here"></textarea>
+							</div>
+							<div class="form-group hidden">
+								<label class="ss-q-item-label" for="entry_440939498">XML Code:</label>
+								<textarea class="form-control" name="entry.440939498" rows="4" cols="0" class="ss-q-long" id="entry_440939498" dir="auto" aria-label="Code Paste any XML code here " placeholder="Code Goes Here"></textarea>
+							</div>
+							<div class="form-group voffset4">
+								<label for="entry_1899499144">Priority: How big of a problem is this issue for you and other students?</label>
+								<br>
+								<label class="radio-inline">
+									<input type="radio" name="entry.379941968" value="Meh" id="group_379941968_1" role="radio" class="ss-q-radio" aria-label="Meh" required="" aria-required="true"> Meh
+								</label>
+										</li>
+								<label class="radio-inline">
+									<input type="radio" name="entry.379941968" value="Not a big problem" id="group_379941968_2" role="radio" class="ss-q-radio" aria-label="Not a big problem" required="" aria-required="true"> Not a big problem
+								</label>
+										</li>
+								<label class="radio-inline">
+									<input type="radio" name="entry.379941968" value="A big problem" id="group_379941968_3" role="radio" class="ss-q-radio" aria-label="A big problem" required="" aria-required="true"> A big problem
+								</label>
+										</li>
+								<label class="radio-inline">
+									<input type="radio" name="entry.379941968" value="OMG So Huge!!" id="group_379941968_4" role="radio" class="ss-q-radio" aria-label="OMG So Huge!!" required="" aria-required="true"> OMG So Huge!!
+								</label>
+							</div>
+							<div class="form-group voffset4">
+								<label class="ss-q-item-label" for="entry_267480158">Frequency: How likely is it that others will run into this issue?</label>
+								<br>
+								<label class="radio-inline">
+									<input type="radio" name="entry.1572993629" value="Very Unlikely" id="group_1572993629_1" role="radio" class="ss-q-radio" aria-label="Very Unlikely" required="" aria-required="true"> Very Unlikely
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="entry.1572993629" value="Unlikely" id="group_1572993629_2" role="radio" class="ss-q-radio" aria-label="Unlikely" required="" aria-required="true"> Unlikely
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="entry.1572993629" value="Likely" id="group_1572993629_3" role="radio" class="ss-q-radio" aria-label="Likely" required="" aria-required="true"> Likely
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="entry.1572993629" value="Very Likely" id="group_1572993629_4" role="radio" class="ss-q-radio" aria-label="Very Likely" required="" aria-required="true"> Very Likely
+								</label>
+							</div>
+							<div class="form-group hidden">
+								<label for="entry_1934743275">Unique ID:</label>
+								<input type="text" name="entry.1934743275" value="" class="ss-q-short" id="entry_1934743275" dir="auto" aria-label="Unique ID  " title="">
+							</div>
+
+							<input type="submit" name="submit" value="Submit" id="ss-submit" class="btn btn-primary">
+							<!--
+							<input type="hidden" name="draftResponse" value="[,,&quot;2362144712679293198&quot;]
+													">
+							<input type="hidden" name="pageHistory" value="0">
+							<input type="hidden" name="fbzx" value="2362144712679293198">
+							<div class="ss-item ss-navigate">
+								<table id="navigation-table">
+									<tbody>
+										<tr>
+											<td class="ss-form-entry goog-inline-block" id="navigation-buttons" dir="ltr">
+												<input type="submit" name="submit" value="Submit" id="ss-submit" class="jfk-button jfk-button-action ">
+												<div class="ss-password-warning ss-secondary-text">Never submit passwords through Google Forms.</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							</ol>-->
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="images-dialog" class="images-dialog modal fade" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h4 class="modal-title">Available Images</h4>
+					</div>
+					<div class="modal-body">
+						<p>The following images are available to you:</p>
+						<div class="row">
+							<ul class="image-asset-list">
+								<li class="col-xs-6 col-sm-4">
+									<div class="image-asset" style="background-image: url(images/ocean.jpg);">
+										<div class="image-asset-name">@drawable/ocean</div>
+									</div>
+								</li>
+								<li class="col-xs-6 col-sm-4">
+									<div class="image-asset" style="background-image: url(images/fish.jpg);">
+										<div class="image-asset-name">@drawable/fish</div>
+									</div>
+								</li>
+                <li class="col-xs-6 col-sm-4">
+                  <div class="image-asset" style="background-image: url(images/mountains.jpg);">
+                    <div class="image-asset-name">@drawable/mountains</div>
+                  </div>
+                </li>
+                <li class="col-xs-6 col-sm-4">
+                  <div class="image-asset" style="background-image: url(images/rocks.jpg);">
+                    <div class="image-asset-name">@drawable/rocks</div>
+                  </div>
+                </li>
+                <li class="col-xs-6 col-sm-4">
+                  <div class="image-asset" style="background-image: url(images/fall.jpg);">
+                    <div class="image-asset-name">@drawable/fall</div>
+                  </div>
+                </li>
+                <li class="col-xs-6 col-sm-4">
+                  <div class="image-asset" style="background-image: url(images/grass.jpg);">
+                    <div class="image-asset-name">@drawable/grass</div>
+                  </div>
+                </li>
+                <li class="col-xs-6 col-sm-4">
+                  <div class="image-asset" style="background-image: url(images/rainbow.jpg);">
+                    <div class="image-asset-name">@drawable/rainbow</div>
+                  </div>
+                </li>
+                <li class="col-xs-6 col-sm-4">
+                  <div class="image-asset" style="background-image: url(images/marshmallow.jpg);">
+                    <div class="image-asset-name">@drawable/marshmallow</div>
+                  </div>
+                </li>
+                <li class="col-xs-6 col-sm-4">
+                  <div class="image-asset" style="background-image: url(images/umbrellas.jpg);">
+                    <div class="image-asset-name">@drawable/umbrellas</div>
+                  </div>
+                </li>
+                <li class="col-xs-6 col-sm-4">
+                  <div class="image-asset" style="background-image: url(images/patio.jpg);">
+                    <div class="image-asset-name">@drawable/patio</div>
+                  </div>
+                </li>
+                <li class="col-xs-6 col-sm-4">
+                  <div class="image-asset" style="background-image: url(images/city.jpg);">
+                    <div class="image-asset-name">@drawable/city</div>
+                  </div>
+                </li>
+                <li class="col-xs-6 col-sm-4">
+                  <div class="image-asset" style="background-image: url(images/car.jpg);">
+                    <div class="image-asset-name">@drawable/car</div>
+                  </div>
+                </li>
+                <li class="col-xs-6 col-sm-4">
+                  <div class="image-asset" style="background-image: url(images/street.jpg);">
+                    <div class="image-asset-name">@drawable/street</div>
+                  </div>
+                </li>
+                <li class="col-xs-6 col-sm-4">
+                  <div class="image-asset" style="background-image: url(images/vegetables.jpg);">
+                    <div class="image-asset-name">@drawable/vegetables</div>
+                  </div>
+                </li>
+                <li class="col-xs-6 col-sm-4">
+                  <div class="image-asset" style="background-image: url(images/android.jpg);">
+                    <div class="image-asset-name">@drawable/android</div>
+                  </div>
+                </li>
+								<li class="col-xs-6 col-sm-4">
+									<div class="image-asset" style="background-image: url(images/cake.jpg);">
+										<div class="image-asset-name">@drawable/cake</div>
+									</div>
+								</li>
+								<li class="col-xs-6 col-sm-4">
+									<div class="image-asset" style="background-image: url(images/cakesmall.jpg);">
+										<div class="image-asset-name">@drawable/cakesmall</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="modal-footer">
+							<div class="col-sm-9 text-left">
+								<p>Thanks to <a href="https://www.flickr.com/photos/romainguy/with/16974639801/">Romain Guy</a> and the Google Developers team for the images.<br>
+								<em>Images are <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">Creative Commons (BY-NC-SA 2.0)</a></em></p>
+							</div>
+							<div class="col-sm-3">
+								<button class="btn btn-primary" data-dismiss="modal">Dismiss</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="layout-options">
+
+
+
+			<!-- <input type="checkbox" id="toggle-element-outline"><label for="toggle-element-outline">Toggle Element Outline</label> -->
+		</div>
+
+
+
+		<img class="test-reference-image" src="">
+	</div>
+
+	<div class="container unsupported-browser">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="col-sm-3 text-center">
+					<img class="frown-cloud" src="images/frown_cloud.png" alt="Frowning Cloud">
+				</div>
+				<div class="col-sm-9 text-center">
+					<h3>We're sorry, your browser is not supported</h3>
+					<p>Please use an up-to-date version of a modern browser<p>
+					<div class="row">
+						<div class="col-xs-6 col-sm-3 col-md-2 col-md-offset-2">
+							<a href="https://www.google.com/intl/en/chrome/browser/desktop/index.html" class="browser-link btn">
+								<img src="images/browser-icons/chrome_24x24.png" alt="Chrome">Chrome
+							</a>
+						</div>
+						<div class="col-xs-6 col-sm-3 col-md-2">
+							<a href="https://www.mozilla.org/en-US/firefox/new/" class="browser-link btn">
+								<img src="images/browser-icons/firefox_24x24.png" alt="Firefox">Firefox
+							</a>
+						</div>
+						<div class="col-xs-6 col-sm-3 col-md-2">
+							<a href="https://support.apple.com/downloads/#safari" class="browser-link btn">
+								<img src="images/browser-icons/safari_24x24.png" alt="Safari">Safari
+							</a>
+						</div>
+						<div class="col-xs-6 col-sm-3 col-md-2">
+							<a href="http://www.opera.com/" class="browser-link btn">
+								<img src="images/browser-icons/opera_24x24.png" alt="Opera">Opera
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<!-- <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script> -->
+	<script src="js/webfont.modified.js"></script>
+	<script src="vendor/codemirror-5.3/lib/codemirror.js" type="text/javascript"></script>
+	<script src="vendor/codemirror-5.3/addon/search/searchcursor.js" type="text/javascript"></script>
+	<script src="vendor/codemirror-5.3/mode/android-xml/android-xml.js"></script>
+	<script src="vendor/codemirror-ui/codemirror-ui.js" type="text/javascript"></script>
+
+	<script src="js/jsDiff.js"></script>
+	<script src="js/diffEngine.js"></script>
+
+	<script src="js/utilities.js"></script>
+
+	<script src="js/evaluator-android-xml-constants.js"></script>
+	<script src="js/evaluator-android-xml-code-examples.js"></script>
+	<script src="js/evaluator-android-xml.js"></script>
+	<script src="js/error-service.js"></script>
+
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="bower_components/bootstrap-material-design/dist/js/ripples.min.js"></script>
+	<script src="bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
+
+		<script>
+			$(document).ready(function() {
+				// This command is used to initialize some elements and make them work properly
+				$.material.init();
+			});
+		</script>
+
+	<script src="js/app.js"></script>
+
+</body>
+</html>
