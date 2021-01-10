@@ -35,6 +35,8 @@ function updateLeads()
 	var siteHitsRef = database.child('Visit_stats');
 	var newHit = 0;
 	var dateTimeStamp = (new Date()).getTime();
+
+	var IP = getIP();
 	
 
 	firebase.database().ref().child("Site_Stats").orderByChild("lastSeen").once("value", function (snapshot) {
@@ -44,9 +46,21 @@ function updateLeads()
 
 			siteHitsRef.update({
 			hits : newHit,
-			lastDate : dateTimeStamp
+			lastDate : dateTimeStamp,
+			ip : IP
 			})
 
 		});
 	});
+
+	
+}
+
+function getIP(){
+	$.getJSON("https://api.ipify.org?format=json", function(data) { 
+  
+            // Setting text of element P with id gfg 
+            return data.ip;
+        }) 
+	
 }

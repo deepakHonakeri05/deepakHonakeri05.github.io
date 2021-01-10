@@ -49,6 +49,7 @@
 
 			firebase.database().ref().child("Site_Stats").orderByChild("lastSeen").once("value", function (snapshot) {
 			  snapshot.forEach(function(childSnapshot) {
+			  	var ip = childSnapshot.val().ip;
 			    var gotHit = childSnapshot.val().hits;
 
 			    var getDate = childSnapshot.val().lastDate;
