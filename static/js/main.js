@@ -26,18 +26,22 @@ function init() {
 	// Initialize Firebase
 	firebase.initializeApp(firebaseConfig);
 	firebase.analytics();
+
+	var ipAddr = "";
+	$.getJSON("https://api.ipify.org?format=json", function(data) { 
+  
+            // Setting text of element P with id gfg 
+            ipAddr = ipAddr+data.ip;
+            updateLeads(ipAddr);
+    }) 
 }
 
-function updateLeads()
+function updateLeads(IP)
 {
-	init();
 	var database = firebase.database().ref('Site_Stats');
 	var siteHitsRef = database.child('Visit_stats');
 	var newHit = 0;
 	var dateTimeStamp = (new Date()).getTime();
-
-	var IP = getIP();
-	
 
 	firebase.database().ref().child("Site_Stats").orderByChild("lastSeen").once("value", function (snapshot) {
 		snapshot.forEach(function(childSnapshot) {
@@ -53,14 +57,5 @@ function updateLeads()
 		});
 	});
 
-	
-}
-
-function getIP(){
-	$.getJSON("https://api.ipify.org?format=json", function(data) { 
-  
-            // Setting text of element P with id gfg 
-            return data.ip;
-        }) 
 	
 }
