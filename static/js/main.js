@@ -27,13 +27,13 @@ function init() {
 	firebase.initializeApp(firebaseConfig);
 	firebase.analytics();
 
-	var ipAddr = "";
-	$.getJSON("https://api.ipify.org?format=json", function(data) { 
+	// var ipAddr = "";
+	// $.getJSON("https://api.ipify.org?format=json", function(data) { 
   
-            // Setting text of element P with id gfg 
-            ipAddr = ipAddr+data.ip;
-            updateLeads(ipAddr);
-    }) 
+ //            // Setting text of element P with id gfg 
+ //            ipAddr = ipAddr+data.ip;
+ //            updateLeads(ipAddr);
+ //    }) 
 }
 
 function updateLeads(IP)
@@ -51,7 +51,7 @@ function updateLeads(IP)
 			siteHitsRef.update({
 			hits : newHit,
 			lastDate : dateTimeStamp,
-			ip : IP
+			ip : "NA"
 			})
 
 		});
