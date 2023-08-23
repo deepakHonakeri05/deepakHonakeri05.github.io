@@ -1,17 +1,18 @@
 {
   "files": {
     "main.css": "/static/css/main.3cf13eba.css",
-    "main.js": "/static/js/main.929b6802.js",
+    "main.js": "/static/js/main.b150f054.js",
     "static/css/64.bba8fa55.chunk.css": "/static/css/64.bba8fa55.chunk.css",
     "static/js/64.20aa9522.chunk.js": "/static/js/64.20aa9522.chunk.js",
     "static/css/769.b3cbb36b.chunk.css": "/static/css/769.b3cbb36b.chunk.css",
     "static/js/769.8820a1de.chunk.js": "/static/js/769.8820a1de.chunk.js",
-    "static/media/insta.png": "/static/media/insta.7e0eb3c5ef472906b0d8.png",
+    "static/media/tdd.png": "/static/media/tdd.da0da29f61a731ad6eb3.png",
+    "static/media/car.jpg": "/static/media/car.6ff83d47653d8876cf47.jpg",
+    "static/media/seg.png": "/static/media/seg.0a006b5214ee31173453.png",
     "static/media/Montserrat-Regular.ttf": "/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
+    "static/media/quest.jpg": "/static/media/quest.30bc7276d3504513b27e.jpg",
     "static/media/Agustina.woff": "/static/media/Agustina.eb0c59dda4cc308cba96.woff",
-    "static/media/axis.png": "/static/media/axis.5ad6253e8a9ceb1b27b4.png",
-    "static/media/reddit.png": "/static/media/reddit.6f4c6abef73064f4b3bf.png",
-    "static/media/exa.jpeg": "/static/media/exa.7e2a6bff549e504f752f.jpeg",
+    "static/media/supervisor.png": "/static/media/supervisor.3ea13695173c1a7af5a4.png",
     "static/media/manOnTable.svg": "/static/media/manOnTable.8f117eb207e57ed8f89d67d595aceb45.svg",
     "static/media/utd.png": "/static/media/utd.9cb83ed0445b2a0d5e55.png",
     "static/media/pes.jpg": "/static/media/pes.e4cc80aa3bfd99d1169f.jpg",
@@ -24,7 +25,7 @@
     "index.html": "/index.html",
     "static/media/talksCardBack.svg": "/static/media/talksCardBack.73ed1545d58273ba64b0.svg",
     "main.3cf13eba.css.map": "/static/css/main.3cf13eba.css.map",
-    "main.929b6802.js.map": "/static/js/main.929b6802.js.map",
+    "main.b150f054.js.map": "/static/js/main.b150f054.js.map",
     "64.bba8fa55.chunk.css.map": "/static/css/64.bba8fa55.chunk.css.map",
     "64.20aa9522.chunk.js.map": "/static/js/64.20aa9522.chunk.js.map",
     "769.b3cbb36b.chunk.css.map": "/static/css/769.b3cbb36b.chunk.css.map",
@@ -32,6 +33,6 @@
   },
   "entrypoints": [
     "static/css/main.3cf13eba.css",
-    "static/js/main.929b6802.js"
+    "static/js/main.b150f054.js"
   ]
 }
